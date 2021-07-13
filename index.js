@@ -5,9 +5,6 @@ const { ApolloServer, gql } = require('apollo-server');
 // that together define the "shape" of queries that are executed against
 // your data.
 const typeDefs = gql`
-  # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
-
-  # This "Book" type defines the queryable fields for every book in our data source.
   type Service {
     service: String
   }
@@ -17,9 +14,8 @@ const typeDefs = gql`
   type Segment {
     segment: String
   }
+
   # The "Query" type is special: it lists all of the available queries that
-  # clients can execute, along with the return type for each. In this
-  # case, the "books" query returns an array of zero or more Books (defined above).
   type Query {
     services: [Service]
     types: [Type]
@@ -27,20 +23,12 @@ const typeDefs = gql`
   }
 `;
 
-// const books = [
-//     {
-//       title: 'The Awakening',
-//       author: 'Kate Chopin',
-//     },
-//     {
-//       title: 'City of Glass',
-//       author: 'Paul Auster',
-//     },
-//   ];
+// Mock Datas
   const services = [ {service:'None'},{service:'Support Level 1'},{service:'Full Service'}];
   const types = [ {type:'Partner'},{type:'Owner'},{type:'Public'}];
   const segments = [ {segment:'Retail'},{segment:'Whole seller'},{segment:'Manufacturer'},{segment:'Consumer'}];
 
+//   The resolvers
   const resolvers = {
     Query: {
       services: () => services,
